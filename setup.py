@@ -15,7 +15,7 @@ setup(
         'opencv-python',  # For OpenCV functionality
         'pandas',
         # 'glob' and 'tkinter' are part of the standard library and not required here
-        'tensorflow>=2.0',  # Ensure this matches the version you used
+        'tensorflow-gpu>=2.5',  # Ensure this matches the version you used
         # Add other dependencies as needed
     ],
     classifiers=[
