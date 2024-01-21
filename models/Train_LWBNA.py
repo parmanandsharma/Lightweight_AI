@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import cv2,os, glob
-from My_Python_modules import LWBNA_models_git
+from LWBNA_models import LWBNA_unet_segmentation_model
 from tensorflow import keras
 
 # This function is to Normalize the image intensity between 0 and 255
@@ -99,7 +99,7 @@ def Train_LWBNA_segmentation_model(image_size=(512,512),Resize=False,img_preproc
     cv2.destroyAllWindows()
 
     img_shape = img1.shape
-    LWBNA_seg_model = LWBNA_models_git.LWBNA_unet_segmentation_model(img_shape)
+    LWBNA_seg_model = LWBNA_unet_segmentation_model(img_shape)
     losses = {'Seg_out': LWBNA_models_git.dice_p_bce}
     metrics = {'Seg_out': LWBNA_models_git.dice_coef}
     opt = keras.optimizers.Adam(learning_rate=1e-4, decay=1e-6)
