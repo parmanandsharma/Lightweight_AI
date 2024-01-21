@@ -92,5 +92,3 @@ def LWBNA_unet_segmentation_model(img_shape=(320,320,3),Output_channel=3,depth_l
     model = keras.Model(inputs, output, name = 'LWBNA_unet_seg_model')
     model.summary()
     return model
-
-LWBNA_unet_segmentation_model()
