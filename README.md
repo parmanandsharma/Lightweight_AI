@@ -1,4 +1,4 @@
-# AI based medical image analysis and disease daignosis based on LWBNA_Unet based models
+# AI based medical image analysis and disease diagnosis based on LWBNA_Unet based models
 
 ## Overview
 LWBNA_unet is a lightweight deep learning model developed for biological image analysis, specifically designed to address challenges in processing large, complex biological images. It is designed with a focus on efficiency and reduced computational resources. It is approximately 10 times lighter than the conventional Unet model. This lightweight design makes it suitable for deployment on devices (such as mobile phone, Nvidia’s Jetson, Raspberry pi) with limited memory and processing capabilities, which is particularly advantageous for tele-screening and real-time medical image analysis.
@@ -83,7 +83,7 @@ model = LWBNA_unet_segmentation_model(img_shape=(512,512,3))
 
 ------rest you can writing your loss function, optimizer etc. -----------
       
-EASY STYLE: Training image segmentation LWBNA_unet model in avery easy way. it will ask you to just open image file from training and validation image directories. Rest it will do everything automatically. Please follow the pop-up windows, if image windows appear just press anykey ---------
+EASY STYLE: Training image segmentation LWBNA_unet model in a very easy way. it will ask you to just open image file from training and validation image directories. Rest it will do everything automatically. Please follow the pop-up windows, if image windows appear just press anykey ---------
        
 from Lightweight_AI import Train_LWBNA_segmentation_model 
 
