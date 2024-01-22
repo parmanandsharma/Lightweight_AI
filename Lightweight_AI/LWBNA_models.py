@@ -82,13 +82,14 @@ def Mid_block(input,filter,depth_layer=4,r_factor=2, segmentation=False ):
     return output
 
 # LWBNA_unet model for segmentation tasks
-def LWBNA_unet_segmentation_model(img_shape=(320,320,3),Output_channel=3,depth_layer=4,f=128,dropout=0.3,AB_block=True):
+def LWBNA_unet_segmentation_model(img_shape=(320,320,3),depth_layer=4,f=128,dropout=0.3,AB_block=True):
+    _,_,output_channel = img_shape
     inputs = keras.Input(shape=img_shape)
     encoder_output, skip_layers,encoder_last_layer_filter= Encoder(inputs, depth_layer, f, dropout, AB_block, fixed_filter=True)
     bottleneck = Mid_block(encoder_output, encoder_last_layer_filter, depth_layer, r_factor=2,segmentation=True)
     bottleneck = Convolution_block(bottleneck[1], encoder_last_layer_filter, kernel=3, AB_layer=AB_block)
     decoder_output = Decoder(bottleneck,skip_layers,depth_layer,encoder_last_layer_filter,dropout,AB_block)
-    output = layers.Conv2D(Output_channel, 3, activation='sigmoid', padding='same',name="Seg_out")(decoder_output)
+    output = layers.Conv2D(output_channel, 3, activation='sigmoid', padding='same',name="Seg_out")(decoder_output)
     model = keras.Model(inputs, output, name = 'LWBNA_unet_seg_model')
     model.summary()
     return model
