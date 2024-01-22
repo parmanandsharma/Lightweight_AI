@@ -28,42 +28,67 @@ For research and non-commercial use, the Software is available under the terms o
 
 ## Usage
 Install Python >=3.8
+
 Setup GPU, if available,
+
 This package will install,
+
 'numpy>=1.24',
+
 'matplotlib>=3.5',
+
 'opencv-python>=4.5.1', 
+
 'pandas>=1.4.0',
+
 'tensorflow-gpu>=2.5',
 
-Setting dataset directory structure
+Setting dataset directory structure:
+
 To train image segmentation model based on LWBNA_unet, at first it is required to create a dataset. Dataset has two folders, training and validation. Both the folders have two folder, one is image and another is GT or Mask. Filename of image in image folder and it's mask in mask folder has the same name. For example the dataset directory tree may looks like:
     
 training
+
    |----images
+   
       |--img_01.png 
+      
       |-------
+      
    |----mask
+   
       |--img_01.png
+      
       |-------
         
 validation
+
    |----val_images
+   
        |--val_01.png
+       
        |------
+       
   |----val_mask
+  
        |---val_01.png
+       
        |-------
                    
 calling segmentation model--------
-from Lightweight_AI import LWBNA_unet_segmentation_model    
-model = LWBNA_unet_segmentation_model(img_shape=(512,512,3))    
+
+from Lightweight_AI import LWBNA_unet_segmentation_model  
+
+model = LWBNA_unet_segmentation_model(img_shape=(512,512,3))
+
 ------rest you can writing your loss function, optimizer etc. -----------
       
 EASY STYLE: Training image segmentation LWBNA_unet model in avery easy way. it will ask you to just open image file from training and validation image directories. Rest it will do everything automatically. Please follow the pop-up windows, if image windows appear just press anykey ---------
        
-from Lightweight_AI import Train_LWBNA_segmentation_model     
-path_for_saving = 'c:/Trained_LWBNA_unet' # set your saving path     
+from Lightweight_AI import Train_LWBNA_segmentation_model 
+
+path_for_saving = 'c:/Trained_LWBNA_unet' # set your saving path  
+
 Train_LWBNA_segmentation_model(image_size=(320,320),Resize=False,img_preprocess=False,total_epochs=500,batch_size=4, model_name='LWBNA_unet',save_path=path_for_saving, load_validation_data = False, early_stop=True, patience=30)
      
 In the above function, if you want to resize image and mask input it and make Resize=True, if you want to equalize image intensity make img_preprocess=True, set total training epochs, batch_size, model_name. if load_validation=False, it will use 20% data from training, you can use early_stoping to avoid overfitting and set patience value. This function uses Dice_loss and adam optimizer.
