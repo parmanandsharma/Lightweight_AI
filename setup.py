@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Lightweight_AI',
-    version='0.1.0',
+    version='0.1.4',
     author='Parmanand Sharma',
     author_email='sharmap.imr@gmail.com',
     description='Lightweight deep learning model for biological image analysis.',
@@ -15,7 +15,7 @@ setup(
         'opencv-python',  # For OpenCV functionality
         'pandas',
         # 'glob' and 'tkinter' are part of the standard library and not required here
-        'tensorflow-gpu>=2.5',  # Ensure this matches the version you used
+        #'tensorflow-gpu>=2.5',  # Ensure this matches the version you used
         # Add other dependencies as needed
     ],
     classifiers=[
